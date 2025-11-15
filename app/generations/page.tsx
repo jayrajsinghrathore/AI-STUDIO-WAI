@@ -21,26 +21,26 @@ export default function GenerationsPage() {
   const [selectedImage, setSelectedImage] = useState<Generation | null>(null)
   const { toast } = useToast()
 
-  useEffect(() => {
-    // Mock data - in production, fetch from API
-    setGenerations([
-      {
-        id: "1",
-        imageUrl: "/luxury-beauty-product-photography.jpg",
-        enhancedPrompt: "Luxurious beauty cream advertisement with elegant packaging",
-        stylePreset: "Photorealistic",
-        created_at: new Date().toISOString(),
-      },
-      {
-        id: "2",
-        imageUrl: "/premium-perfume-bottle-advertisement.jpg",
-        enhancedPrompt: "Premium perfume bottle with sophisticated background",
-        stylePreset: "Oil Painting",
-        created_at: new Date(Date.now() - 86400000).toISOString(),
-      },
-    ])
-    setIsLoading(false)
-  }, [])
+  // useEffect(() => {
+  //   // Mock data - in production, fetch from API
+  //   setGenerations([
+  //     {
+  //       id: "1",
+  //       imageUrl: "/luxury-beauty-product-photography.jpg",
+  //       enhancedPrompt: "Luxurious beauty cream advertisement with elegant packaging",
+  //       stylePreset: "Photorealistic",
+  //       created_at: new Date().toISOString(),
+  //     },
+  //     {
+  //       id: "2",
+  //       imageUrl: "/premium-perfume-bottle-advertisement.jpg",
+  //       enhancedPrompt: "Premium perfume bottle with sophisticated background",
+  //       stylePreset: "Oil Painting",
+  //       created_at: new Date(Date.now() - 86400000).toISOString(),
+  //     },
+  //   ])
+  //   setIsLoading(false)
+  // }, [])
 
   const handleDownload = async (imageUrl: string) => {
     try {
