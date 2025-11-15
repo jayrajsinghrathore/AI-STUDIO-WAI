@@ -5,234 +5,41 @@ A Next.js application for generating stunning AI-powered beauty product advertis
 
 ---
 
-## Pages & Functionality
-
-### 1. Home Page (`/`)
-**Design:** Modern landing page with gradient background
-**Components:**
-- Header with navigation (Login / Enter Studio buttons)
-- Hero section: "AI-Powered Beauty Ad Generator"
-- Three feature cards:
-  - Enhance Prompts - AI-powered prompt refinement
-  - Generate Images - Create professional-quality ads
-  - Manage Gallery - View and download generated images
-- CTA Button: "Get Started"
-
-**Visual Layout:**
-\`\`\`
-┌─────────────────────────────────────────┐
-│  Creative Studio        [Login] [Enter]  │
-├─────────────────────────────────────────┤
-│                                          │
-│   AI-Powered Beauty Ad Generator        │
-│   Create stunning ads with AI           │
-│            [Get Started →]              │
-│                                          │
-├────────────────┬────────────────┬───────┤
-│  Enhance       │  Generate      │ Manage│
-│  Prompts       │  Images        │Gallery│
-│  AI refines... │  Create pro... │ View &│
-└────────────────┴────────────────┴───────┘
-\`\`\`
+## 🔗 Live Demo  
+[Creative Studio — Beauty Ad Generator](https://ai-studio-wai-jys5.vercel.app)  
 
 ---
 
-### 2. Login Page (`/auth/login`)
-**Design:** Centered card-based form on light background
-**Elements:**
-- Card container with title "Login"
-- Email input field
-- Password input field
-- Error message display (if any)
-- "Sign in" button
-- Link to signup page
-
-**Flow:**
-1. User enters email and password
-2. Form validates inputs
-3. Token is set and user is redirected to `/studio`
+## 🖼️ Screenshots / Demo  
+![Home and Studio interface](/public/Screenshot%20from%202025-11-15%2022-26-45.png) 
+![Login and Sign Up](/public/Screenshot%20from%202025-11-15%2022-26-58.png) 
+![Gallery & Image Generation](/public/Screenshot%20from%202025-11-15%2022-52-58.png)  
+*Add more GIF or screenshot if you like, e.g., prompt → image workflow.*
 
 ---
 
-### 3. Signup Page (`/auth/signup`)
-**Design:** Centered card-based form (same as login)
-**Elements:**
-- Card with title "Create Account"
-- Email input
-- Password input
-- Confirm Password input
-- Error messages
-- "Create account" button
-- Link to login page
-
-**Flow:**
-1. User fills signup form
-2. Password validation (must match)
-3. Account created, redirects to signup success
+## 🎯 Features  
+- Prompt enhancement: turn a raw user prompt into a refined one via AI.  
+- Image generation: use the enhanced prompt to generate high-quality beauty ad visuals.  
+- User authentication: Supabase Auth  
+- Gallery view: browse, download, and manage generated images.  
+- Responsive UI with modern design (desktop, tablet, mobile).  
+- Deployment-ready: built with best practices for environment variables, API usage, and error handling.
 
 ---
 
-### 4. Signup Success Page (`/auth/signup-success`)
-**Design:** Confirmation message card
-**Elements:**
-- Title: "Check Your Email"
-- Message about confirmation link
-- Link back to login
+## 🧰 Tech Stack  
+- **Frontend / Framework:** Next.js (App Router) with TypeScript  
+- **Styling & UI:** Tailwind CSS, Framer Motion (for animations)  
+- **Authentication & Backend:** Supabase AUTH, PostgreSQL ( Supabase ) 
+- **AI & External APIs:** Google AI Studio / Gemini (prompt enhancement(gemini 2.5 pro) + image generation (nano banana))  
+- **Package Manager:** pnpm  
+- **Hosting / Deployment:** Vercel  
+- **Dev Tools:** ESLint, Prettier (optional), Husky (optional)  
 
 ---
 
-### 5. Studio Page (`/studio`) - MAIN APP
-**Design:** Two-column layout
-- **Left Column (1/3):** Input panel (sticky)
-- **Right Column (2/3):** Image gallery
-
-**Left Panel - Prompt Input:**
-\`\`\`
-┌──────────────────┐
-│  Create Your Ad  │
-├──────────────────┤
-│ Original Prompt  │
-│ [Text Area]      │
-│ [Placeholder]    │
-│                  │
-│ Enhanced Prompt  │
-│ [Display Box]    │ (shows after enhance)
-│                  │
-│ [Enhance] [Gen]  │
-│ Prompt    Image  │
-└──────────────────┘
-\`\`\`
-
-**Elements:**
-- Text area for original prompt (pre-filled: "Luxurious lipstick...")
-- "Enhance Prompt" button (makes API call to `/api/enhance`)
-- "Generate Image" button (makes API call to `/api/generate`)
-- Displays enhanced version after enhancement
-- Loading states for both buttons
-
-**Right Panel - Generated Images:**
-\`\`\`
-┌─────────────────────────────┐
-│  Generated Images           │
-├─────────────────────────────┤
-│  ┌──────────┐  ┌──────────┐ │
-│  │          │  │          │ │
-│  │  Image1  │  │  Image2  │ │
-│  │          │  │          │ │
-│  └──────────┘  └──────────┘ │
-│  [Download]    [Download]   │
-│  "Prompt 1..." "Prompt 2..." │
-│                              │
-│  ┌──────────┐  ┌──────────┐ │
-│  │  Image3  │  │  Image4  │ │
-│  └──────────┘  └──────────┘ │
-└─────────────────────────────┘
-\`\`\`
-
-**Features:**
-- Grid layout (1 column on mobile, 2 on desktop)
-- Each image shows:
-  - Image preview
-  - Hover overlay with download button
-  - Enhanced prompt text overlay at bottom
-- Shows empty state if no images yet
-
-**Header:**
-- Navigation links: Gallery, User email, Logout
-- Creative Studio logo (clickable to studio)
-
 ---
-
-### 6. Gallery/Generations Page (`/generations`)
-**Design:** Full-width image grid
-**Elements:**
-- Page title: "Your Gallery"
-- Description: "View and manage all your generated beauty ad images"
-- Image grid (3 columns on desktop, responsive)
-- Each image card contains:
-  - Image preview
-  - Hover download button
-  - Prompt text and creation date
-  - Empty state with "Go to Studio" button if no images
-
-\`\`\`
-┌────────────────────────────────────────┐
-│  Your Gallery                          │
-│  View and manage all images...         │
-├────────────────────────────────────────┤
-│  ┌──────────┐ ┌──────────┐ ┌────────┐ │
-│  │          │ │          │ │        │ │
-│  │ Image 1  │ │ Image 2  │ │Image 3 │ │
-│  │          │ │          │ │        │ │
-│  └──────────┘ └──────────┘ └────────┘ │
-│  Prompt 1... Prompt 2... Prompt 3...   │
-│  11/13/2025  11/13/2025  11/13/2025    │
-│                                        │
-│  ┌──────────┐ ┌──────────┐ ┌────────┐ │
-│  │ Image 4  │ │ Image 5  │ │Image 6 │ │
-│  └──────────┘ └──────────┘ └────────┘ │
-└────────────────────────────────────────┘
-\`\`\`
-
----
-
-## API Routes
-
-### `POST /api/enhance`
-**Purpose:** Enhance AI prompt for better image generation
-**Request Body:**
-\`\`\`json
-{
-  "prompt": "Luxurious lipstick advertisement with golden packaging"
-}
-\`\`\`
-**Response:**
-\`\`\`json
-{
-  "enhancedPrompt": "Luxurious lipstick advertisement with golden packaging - Enhanced with professional studio lighting..."
-}
-\`\`\`
-
-### `POST /api/generate`
-**Purpose:** Generate beauty product image from prompt
-**Request Body:**
-\`\`\`json
-{
-  "prompt": "Enhanced prompt text..."
-}
-\`\`\`
-**Response:**
-\`\`\`json
-{
-  "imageUrl": "/placeholder.svg?key=beauty1",
-  "id": "gen-1234567890"
-}
-\`\`\`
-
----
-
-## Design System
-
-**Color Scheme:**
-- Primary: Slate/Dark backgrounds (#1e293b, #0f172a)
-- Accent: Blue (#2563eb for buttons/links)
-- Text: White on dark, Gray (#64748b) for secondary text
-- Borders: Slate-700 (#374151)
-
-**Typography:**
-- Font Family: Geist (sans-serif)
-- Heading: Bold, large sizes
-- Body: Regular weight
-- Max width: 7xl (80rem)
-
-**Responsive Design:**
-- Mobile: 1 column layouts
-- Tablet (md): 2-3 columns
-- Desktop (lg): 3+ columns
-- Sticky sidebar on desktop (studio page)
-
----
-
 ## User Flow
 
 \`\`\`
@@ -251,18 +58,17 @@ Studio Page (Main App)
 
 ---
 
-## Demo Features
+## Features
 
-**For Demo Mode (ignoring OpenAI API):**
 - ✅ Signup/Login (demo validation)
 - ✅ Prompt Enhancement (appends enhancement text)
 - ✅ Image Generation (returns placeholder images)
 - ✅ Download functionality (downloads placeholder)
 - ✅ Gallery view with mock data
 - ✅ All UI/UX flows working
-- ⏳ Real Gemini API integration (when enabled)
-- ⏳ Real image generation (when enabled)
-- ⏳ Database persistence (when Supabase is configured)
+- ✅ Gemini API integration 
+- ✅ Real image generation 
+- ✅ Database persistence 
 
 ---
 
