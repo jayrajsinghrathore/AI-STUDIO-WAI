@@ -404,7 +404,7 @@ export default function StudioPage() {
       )}
     </div>
   )
-}
+} 
 
 // "use client"
 
