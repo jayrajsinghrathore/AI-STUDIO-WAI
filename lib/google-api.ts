@@ -23,7 +23,6 @@ function buildGoogleHeaders(useOAuth: boolean) {
   return headers;
 }
 
-// single delay helper (avoid duplicate 'sleep' names)
 async function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -125,7 +124,7 @@ export async function fetchWithRetries(
   throw lastErr ?? new Error("fetchWithRetries exhausted");
 }
 
-// Utilities to extract text from Gemini responses (keeps your original robust extractor)
+// Utilities to extract text from Gemini responses 
 function extractTextFromGeminiResponse(json: any): string | null {
   const cand = json?.candidates?.[0];
   if (cand) {
@@ -261,7 +260,7 @@ export async function generateImageWithGemini({
     let finalPrompt = prompt;
     if (stylePreset) finalPrompt = `${finalPrompt}, style: ${stylePreset}`;
 
-    // put size and instructions in the prompt; some models accept explicit image config, but this is robust
+    
     const imageRequestBody = {
       contents: [
         {
@@ -302,10 +301,7 @@ export async function generateImageWithGemini({
       // debug log of upstream body (truncated)
       console.info("[Gemini image] upstream snippet:", JSON.stringify(j).slice(0, 2000));
 
-      // try multiple possible shapes for image data
-      // 1) candidates[0].content.parts[*].inlineData { mimeType, data }
-      // 2) candidates[0].content.parts[*].text if it contains data:url
-      // 3) j.image.b64_json, j.output[0].b64_json, etc.
+     
       let base64: string | null = null;
       let mimeType: string | null = null;
       const candidates = j?.candidates ?? [];

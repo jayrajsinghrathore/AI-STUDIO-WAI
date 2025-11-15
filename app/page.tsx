@@ -122,7 +122,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="border-t border-rose-200/50 py-8 text-center text-gray-600">
-        <p>Creative Studio © 2025. Powered by Google Gemini & Banana.dev.</p>
+        <p>Creative Studio © 2025. Powered by Google Gemini</p>
       </footer>
     </div>
   )

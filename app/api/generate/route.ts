@@ -1,17 +1,3 @@
-/**
- * POST /api/generate
- * Generates images using Banana.dev (Stable Diffusion) and saves to Supabase Storage
- *
- * Request body: { prompt: string, enhancedPrompt: string, numVariations?: number, stylePreset?: string }
- * Response: { generationId: string, imageUrls: string[] }
- *
- * Error responses:
- * - 400: Invalid input
- * - 401: Unauthorized
- * - 429: Rate limit exceeded
- * - 500: Server error
- */
-
 import { NextRequest, NextResponse } from "next/server"
 import { generateImageWithGemini } from "@/lib/google-api"
 import { supabaseServer } from "@/lib/supabase-server"
