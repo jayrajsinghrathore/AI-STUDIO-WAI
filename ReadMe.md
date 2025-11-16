@@ -5,8 +5,9 @@ A Next.js application for generating stunning AI-powered beauty product advertis
 
 ---
 
-## 🔗 Live Demo  
+## 🔗 Live Demo  And Video Walkthrough
 [Creative Studio — Beauty Ad Generator](https://ai-studio-wai-jys5.vercel.app)  
+[Video Walkthrough](https://www.loom.com/share/26763a9876cd447c8b74f931222c9c55)
 
 ---
 
